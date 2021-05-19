@@ -1,7 +1,7 @@
 /*
  * @Description:社交媒体图标组件
  * @Date: 2021-05-07 00:06:35
- * @LastEditTime: 2021-05-19 11:07:37
+ * @LastEditTime: 2021-05-19 18:38:14
  * @FilePath: \WarblerHomepage\src\components\SocialContact\index.ts
  */
 export interface SocialContactProps {
@@ -26,7 +26,7 @@ export const initData: SocialContactList = [
   {
     icon: '&#xe603;',
     title: '掘金',
-    targetUrl: 'https://juejin.cn/user/4099422807393901',
+    targetUrl: 'https://juejin.cn/post/6963945204965441550',
   },
   {
     icon: ' &#xe640;',
