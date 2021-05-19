@@ -1,8 +1,8 @@
 <!--
  * @Description:使用帮助组件
  * @Date: 2021-05-11 18:57:37
- * @LastEditTime: 2021-05-13 17:36:32
- * @FilePath: \warbler-homepage\src\components\Instructions\Instructions.vue
+ * @LastEditTime: 2021-05-19 11:18:26
+ * @FilePath: \WarblerHomepage\src\components\Instructions\Instructions.vue
 -->
 <template>
   <div class="instructions-box">
@@ -15,6 +15,7 @@
           <li><span>添加、修改书签时，可以在输入目标网址后，点击“自动获取网站名称”或者“自动获取图标地址”按钮，即可自动获取目标网址的名称和图标。</span></li>
           <li><span>由于接口能力有限，会有部分网站自动获取失败的情况，建议手动输入网络图标地址，暂不支持上传。如自动获取失败或者不填写网络图标地址，将使用默认图标替代。</span></li>
           <li><span>本站暂不提供账号功能，为防止数据丢失，可以点击左下角 <i class="iconfont">&#xe625;</i> 图案将数据保存到本地进行备份，在需要的地方点击 <i class="iconfont">&#xe601;</i> 图案进行数据恢复。</span></li>
+          <li><span>最后非常感谢大家对本站的支持，欢迎点击右侧图标前往 <strong>github/gitee</strong> 点个 <strong>Star</strong> ，或者到 <strong>掘金社区</strong> 点个赞。</span></li>
         </ul>
       </div>
     </Dialog>
