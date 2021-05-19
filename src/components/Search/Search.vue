@@ -1,8 +1,8 @@
 <!--
  * @Description:搜索组件
  * @Date: 2021-05-13 10:45:50
- * @LastEditTime: 2021-05-13 17:51:31
- * @FilePath: \warbler-homepage\src\components\Search\Search.vue
+ * @LastEditTime: 2021-05-19 11:21:28
+ * @FilePath: \WarblerHomepage\src\components\Search\Search.vue
 -->
 <template>
   <div class="search-box">
@@ -74,6 +74,10 @@ export default defineComponent({
       color: var(--theme--main);
       text-align: center;
       background-color: transparent;
+
+      &::-webkit-input-placeholder {
+        color: #585c89;
+      }
     }
   }
 
