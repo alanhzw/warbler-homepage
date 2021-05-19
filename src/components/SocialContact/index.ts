@@ -1,8 +1,8 @@
 /*
  * @Description:社交媒体图标组件
  * @Date: 2021-05-07 00:06:35
- * @LastEditTime: 2021-05-17 18:13:04
- * @FilePath: \warbler-homepage\src\components\SocialContact\index.ts
+ * @LastEditTime: 2021-05-19 11:07:37
+ * @FilePath: \WarblerHomepage\src\components\SocialContact\index.ts
  */
 export interface SocialContactProps {
   icon: string;
@@ -21,7 +21,7 @@ export const initData: SocialContactList = [
   {
     icon: '&#xe60b;',
     title: 'gitee',
-    targetUrl: 'https://gitee.com/hzw_0174/warbler-homepage',
+    targetUrl: 'https://gitee.com/hzw_0174/WarblerHomepage',
   },
   {
     icon: '&#xe603;',
