@@ -1,0 +1,45 @@
+
+//淡入淡出
+.base-enter-active,
+.base-leave-active {
+  transition: all 0.3s ease;
+}
+.base-enter-to,
+.base-leave-from {
+  opacity: 1;
+}
+.base-enter-from,
+.base-leave-to {
+  opacity: 0;
+}
+
+//dialog
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: all 0.3s ease;
+}
+.dialog-enter-to,
+.dialog-leave-from {
+  opacity: 1;
+}
+.dialog-enter-from,
+.dialog-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+
+//message
+.message-enter-active,
+.message-leave-active {
+  transition: all 0.3s ease;
+}
+.message-enter-to,
+.message-leave-from {
+  opacity: 1;
+}
+.message-enter-from,
+.message-leave-to {
+  transform: translate(-50%,-100%);
+  opacity: 0;
+}

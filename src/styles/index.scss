@@ -1,0 +1,92 @@
+/*
+ * @Description: 全局css
+ * @Author: hanzhiwei
+ * @Date: 2020-10-08 13:44:33
+ * @LastEditTime: 2021-05-17 19:47:13
+ * @FilePath: \warbler-homepage\src\styles\index.scss
+ */
+@import './transition_vue.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+div {
+  box-sizing: border-box;
+  // 防止选取文本
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    hsl(170deg, 80%, 70%),
+    hsl(190deg, 80%, 70%),
+    hsl(250deg, 80%, 70%),
+    hsl(320deg, 80%, 70%)
+  );
+  background-size: 200% 200%;
+  animation: gradient-move 5s ease infinite alternate;
+  color: var(--color-text);
+  font-family: Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+  
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* 主题颜色 */
+:root {
+  --theme-main: #2f3e4c;
+  --theme-success: #52de97;
+  --theme-danger: rgba(52, 94, 185, 0.6);
+  --theme-info: #9ed0ff;
+  --theme-wrning: #ffdd98;
+  --color-text: #2f3e4c;
+  --color-text-placeholder: #2f3e4c;
+  --color-mark-title: #2f3e4c;
+  --color-mark-title-hover: rgba(36, 138, 112, 0.3);
+  --color-label-title: #3f1661;
+  --color-label-title-hover: rgba(85, 43, 184, 0.2);
+  --color-label-title-click: rgba(85, 43, 184, 0.4);
+  --color-label-color-hover: rgb(209, 152, 87);
+
+
+  --button-bg-color:rgba(16, 143, 111, 0.3);
+  --glassmorphism-rgb:255,255,255;
+  --glassmorphism-opacity:0.25;
+  --glassmorphism-rgba:rgba(var(--glassmorphism-rgb), var(--glassmorphism-opacity));
+  --glassmorphism-filter:blur(10px);
+  --glassmorphism-radius:10px;
+}
+
+/* 引入字体图标 */
+@font-face {
+  font-family: 'iconfont';  /* Project id 2504097 */
+  src: url('//at.alicdn.com/t/font_2504097_1s2crghumk4.woff2?t=1621241285296') format('woff2'),
+       url('//at.alicdn.com/t/font_2504097_1s2crghumk4.woff?t=1621241285296') format('woff'),
+       url('//at.alicdn.com/t/font_2504097_1s2crghumk4.ttf?t=1621241285296') format('truetype');
+}
+/* 使用字体图标 */
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
