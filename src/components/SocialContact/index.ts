@@ -1,7 +1,7 @@
 /*
  * @Description:社交媒体图标组件
  * @Date: 2021-05-07 00:06:35
- * @LastEditTime: 2021-05-19 18:38:14
+ * @LastEditTime: 2021-05-19 18:46:22
  * @FilePath: \WarblerHomepage\src\components\SocialContact\index.ts
  */
 export interface SocialContactProps {
