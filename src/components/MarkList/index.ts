@@ -1,8 +1,8 @@
 /*
  * @Description:书签组件的一些基础配置,数据,接口等
  * @Date: 2021-04-26 11:41:18
- * @LastEditTime: 2021-05-12 18:50:15
- * @FilePath: \warbler-homepage\src\components\MarkList\index.ts
+ * @LastEditTime: 2021-05-31 18:29:31
+ * @FilePath: \WarblerHomepage\src\components\MarkList\index.ts
  */
 import { RulesProp } from 'base/Input/index';
 
@@ -25,6 +25,8 @@ export interface MarkState {
   handleType: HandleMarkType;
   defaultImg: string;
   currentMark: number;
+  oldItemIndex: number;
+  newItemIndex: number;
 }
 
 // 弹窗相关操作数据

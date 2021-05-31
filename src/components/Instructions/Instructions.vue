@@ -1,7 +1,7 @@
 <!--
  * @Description:使用帮助组件
  * @Date: 2021-05-11 18:57:37
- * @LastEditTime: 2021-05-19 11:18:26
+ * @LastEditTime: 2021-05-31 18:52:23
  * @FilePath: \WarblerHomepage\src\components\Instructions\Instructions.vue
 -->
 <template>
@@ -11,6 +11,7 @@
         <ul>
           <li><span>输入内容后，点击对应图案可以使用不同搜索引擎进行内容搜索，也可以点击 <i class="iconfont">&#xe602;</i> 图案进行翻译。回车键默认使用百度搜索。</span></li>
           <li><span>点击左下角 <i class="iconfont">&#xe653;</i> 图案，即可进入编辑模式，可以进行标签，书签的增加、修改、删除等操作。编辑模式下，不可进行跳转，点击右下角“退出编辑模式”即可退出。</span></li>
+          <li><span>在编辑模式下，可以拖动书签图标进行排序，自动生效。</span></li>
           <li><span>点击左下角 <i class="iconfont">&#xe793;</i> 图案，可以快捷添加标签，无需进入编辑模式。</span></li>
           <li><span>添加、修改书签时，可以在输入目标网址后，点击“自动获取网站名称”或者“自动获取图标地址”按钮，即可自动获取目标网址的名称和图标。</span></li>
           <li><span>由于接口能力有限，会有部分网站自动获取失败的情况，建议手动输入网络图标地址，暂不支持上传。如自动获取失败或者不填写网络图标地址，将使用默认图标替代。</span></li>

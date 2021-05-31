@@ -1,8 +1,8 @@
 /*
  * @Description:收藏夹组件中跟书签相关的操作
  * @Date: 2021-04-26 16:23:29
- * @LastEditTime: 2021-05-17 16:07:56
- * @FilePath: \warbler-homepage\src\components\BookMark\useMarks.ts
+ * @LastEditTime: 2021-05-31 18:45:39
+ * @FilePath: \WarblerHomepage\src\components\BookMark\useMarks.ts
  */
 
 import { Ref } from 'vue';
@@ -12,9 +12,10 @@ import defaultImgUrl from 'assets/favicon.png';
 import createMessage from 'base/Message/index';
 
 const useMarks = (currentId: Ref<number>, warblerData: LabelListProps) => {
+  const marks = warblerData[currentId.value].marks;
   // 添加书签
   const addMark = (state: MarkProps) => {
-    warblerData[currentId.value].marks.push({
+    marks.push({
       icon: state.icon || defaultImgUrl,
       title: state.title,
       explain: state.explain,
@@ -24,18 +25,26 @@ const useMarks = (currentId: Ref<number>, warblerData: LabelListProps) => {
   };
   // 删除书签
   const deleteMark = (index: number) => {
-    warblerData[currentId.value].marks.splice(index, 1);
+    marks.splice(index, 1);
     createMessage({ type: 'success', message: '删除书签成功 !' });
   };
   // 修改书签
   const updateMark = (index: number, state: MarkProps) => {
-    warblerData[currentId.value].marks[index] = { ...state };
+    marks[index] = { ...state };
     createMessage({ type: 'success', message: '修改书签成功 !' });
+  };
+  // 修改书签索引
+  const changeMarkIndex = (oldItemIndex: number, newItemIndex: number) => {
+    // 删除老的
+    const changeItem = marks.splice(oldItemIndex, 1)[0];
+    // 在列表中目标位置增加新的
+    marks.splice(newItemIndex, 0, changeItem);
   };
   return {
     addMark,
     deleteMark,
     updateMark,
+    changeMarkIndex,
   };
 };
 export default useMarks;

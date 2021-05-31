@@ -1,12 +1,12 @@
 <!--
  * @Description:书签列表组件
  * @Date: 2021-04-21 19:22:00
- * @LastEditTime: 2021-05-17 11:46:58
- * @FilePath: \warbler-homepage\src\components\MarkList\MarkList.vue
+ * @LastEditTime: 2021-05-31 19:18:03
+ * @FilePath: \WarblerHomepage\src\components\MarkList\MarkList.vue
 -->
 <template>
   <div class="mark-list-box">
-    <div v-for='(item,index) in markList' :key='index' class="mark-item" @click='inter(item.targetUrl)' @mouseenter="changeMark(index)" @mouseleave="changeMark(-1)">
+    <div :draggable="editMode" v-for='(item,index) in markList' @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" :key='index' class="mark-item" @click='inter(item.targetUrl)' @mouseenter="changeMark(index)" @mouseleave="changeMark(-1)">
       <!-- 图标 -->
       <img :src="item.icon" class="item-icon" :onerror='defaultImg'>
       <!-- 标题 -->
@@ -60,7 +60,7 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, PropType, toRefs, ref, reactive, toRef } from 'vue';
+import { defineComponent, PropType, toRefs, ref, reactive } from 'vue';
 import { MarkListProps, HandleMarkType, MarkState } from './index';
 import { MarkProps } from 'coms/MarkList/index';
 import defaultImgUrl from 'assets/favicon.png';
@@ -89,7 +89,7 @@ export default defineComponent({
     WhInput,
     WhButton,
   },
-  emits: ['add-mark', 'update-mark', 'delete-mark'],
+  emits: ['add-mark', 'update-mark', 'delete-mark', 'change-mark-index'],
   setup(props, { emit }) {
     // 获取form元素
     const form = ref<any>(null);
@@ -117,6 +117,10 @@ export default defineComponent({
       defaultImg: `this.src="${defaultImgUrl}"`,
       // 用来标记当前鼠标划过的书签
       currentMark: -1,
+      // 当前正在拖拽的元素索引
+      oldItemIndex: -1,
+      // 将插入的目标位置索引
+      newItemIndex: -1,
     });
     // 添加书签
     const addMark = () => {
@@ -150,6 +154,23 @@ export default defineComponent({
         createMessage('请先退出编辑模式 !');
       }
     };
+    // 开始拖拽时触发
+    const handleDragstart = (index: number) => {
+      state.oldItemIndex = index;
+    };
+    // 停止拖拽时触发
+    const handleDrop = () => {
+      // 如果位置没有发生改变 什么也不做
+      if (state.newItemIndex === state.oldItemIndex) {
+        return;
+      }
+      // 如果位置发生了改变
+      emit('change-mark-index', state.oldItemIndex, state.newItemIndex);
+    };
+    // 拖拽经过其他元素时触发
+    const handleDragover = (index: number) => {
+      state.newItemIndex = index;
+    };
 
     return {
       form,
@@ -165,6 +186,9 @@ export default defineComponent({
       deleteMark,
       updateMark,
       addMark,
+      handleDrop,
+      handleDragstart,
+      handleDragover,
     };
   },
 });

@@ -1,8 +1,8 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-05-18 18:56:02
- * @FilePath: \warbler-homepage\src\components\BookMark\Bookmark.vue
+ * @LastEditTime: 2021-05-31 18:43:33
+ * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
   <!-- 组件根节点 -->
@@ -27,7 +27,7 @@
       </div>
       <!-- 下方列表详情部分 -->
       <div class="right-middle-part">
-        <mark-list :mark-list="markList" @add-mark="addMark" @delete-mark="deleteMark" @update-mark="updateMark" :edit-mode='editMode'></mark-list>
+        <mark-list :mark-list="markList" @add-mark="addMark" @delete-mark="deleteMark" @update-mark="updateMark" :edit-mode='editMode' @change-mark-index='changeMarkIndex'></mark-list>
       </div>
       <div class="right-bottom-part">
         <div class="quit-edit-mode" v-if='editMode' @click='editModeFn'>
@@ -86,7 +86,7 @@ export default defineComponent({
     const { addLabel, deleteLabel, updateLabel } = useLabels(state.warblerData);
 
     // 导出useMarks相关内容
-    const { addMark, deleteMark, updateMark } = useMarks(currentId, state.warblerData);
+    const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(currentId, state.warblerData);
 
     // 把数据存到localstroge中  监听  当数据变化的时候就调取一次存储方法
     // 立即调用一次的目的是如果localstroge里面没有值则立刻存一次
@@ -128,6 +128,7 @@ export default defineComponent({
       editModeFn,
       updateWarblerData,
       markList,
+      changeMarkIndex,
     };
   },
 });
