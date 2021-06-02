@@ -1,7 +1,7 @@
 <!--
  * @Description:书签列表组件
  * @Date: 2021-04-21 19:22:00
- * @LastEditTime: 2021-05-31 19:18:03
+ * @LastEditTime: 2021-06-02 14:56:35
  * @FilePath: \WarblerHomepage\src\components\MarkList\MarkList.vue
 -->
 <template>
@@ -70,6 +70,7 @@ import useDialog from './useDialog';
 import WhButton from 'base/Button/Wh-button.vue';
 import WhFrom from 'base/Form/Wh-form.vue';
 import createMessage from 'base/Message/index';
+import useDrag from 'hooks/useDraggable';
 
 export default defineComponent({
   name: 'MarkList',
@@ -96,7 +97,8 @@ export default defineComponent({
 
     // 导出有关Dialog的属性,方法
     const { dialogState, dialogFormState, showAddMarkDialog, closeAddMarkDialog, autoGetInfo } = useDialog();
-
+    // 导出拖拽相关的方法
+    const { handleDragstart, handleDrop, handleDragover, dragState } = useDrag(emit, 'change-mark-index');
     // 操作书签
     const handleMark = (type: HandleMarkType) => {
       const result = form.value.submitForm();
@@ -117,10 +119,6 @@ export default defineComponent({
       defaultImg: `this.src="${defaultImgUrl}"`,
       // 用来标记当前鼠标划过的书签
       currentMark: -1,
-      // 当前正在拖拽的元素索引
-      oldItemIndex: -1,
-      // 将插入的目标位置索引
-      newItemIndex: -1,
     });
     // 添加书签
     const addMark = () => {
@@ -154,29 +152,12 @@ export default defineComponent({
         createMessage('请先退出编辑模式 !');
       }
     };
-    // 开始拖拽时触发
-    const handleDragstart = (index: number) => {
-      state.oldItemIndex = index;
-    };
-    // 停止拖拽时触发
-    const handleDrop = () => {
-      // 如果位置没有发生改变 什么也不做
-      if (state.newItemIndex === state.oldItemIndex) {
-        return;
-      }
-      // 如果位置发生了改变
-      emit('change-mark-index', state.oldItemIndex, state.newItemIndex);
-    };
-    // 拖拽经过其他元素时触发
-    const handleDragover = (index: number) => {
-      state.newItemIndex = index;
-    };
-
     return {
       form,
       ...toRefs(state),
       ...toRefs(dialogState),
       ...toRefs(dialogFormState),
+      ...toRefs(dragState),
       closeAddMarkDialog,
       showAddMarkDialog,
       handleMark,

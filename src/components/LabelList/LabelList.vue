@@ -1,13 +1,13 @@
 <!--
  * @Description:标签列表组件
  * @Date: 2021-04-21 19:10:21
- * @LastEditTime: 2021-05-17 16:26:13
- * @FilePath: \warbler-homepage\src\components\LabelList\LabelList.vue
+ * @LastEditTime: 2021-06-02 15:01:14
+ * @FilePath: \WarblerHomepage\src\components\LabelList\LabelList.vue
 -->
 <template>
   <div class="label-list-box">
     <!-- 循环生成标签列表 -->
-    <div v-for='(item,index) in labelList' :key='index' class="label" @click.prevent='changeLabel(index ,"click")' @mouseenter="changeLabel(index,'hover')" @mouseleave="changeLabel(-1,'hover')" :class='{currentClick:currentId===index,currentHover:currentHoverLabel===index}'>
+    <div :draggable="editMode" @dragend="changeLabel(newItemIndex,'click')" @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" v-for='(item,index) in labelList' :key='index' class="label" @click.prevent='changeLabel(index ,"click")' @mouseenter="changeLabel(index,'hover')" @mouseleave="changeLabel(-1,'hover')" :class='{currentClick:currentId===index,currentHover:currentHoverLabel===index}'>
       <!-- 标签标题 -->
       <i class="iconfont">&#xe610;</i>
       <div :title='item.title' class="label-title">
@@ -36,7 +36,7 @@ import Dialog from 'base/Dialog/Dialog.vue';
 import useDialog from 'coms/LabelList/useDialog';
 import WhInput from 'base/Input/Wh-input.vue';
 import { emitter } from 'hooks/useMitt';
-
+import useDrag from 'hooks/useDraggable';
 export default defineComponent({
   name: 'LabelList',
   props: {
@@ -58,14 +58,15 @@ export default defineComponent({
     WhInput,
     WhFrom,
   },
-  emits: ['change-label', 'add-label', 'delete-label', 'update-label'],
+  emits: ['change-label', 'add-label', 'delete-label', 'update-label', 'change-label-index'],
   setup(props, { emit }) {
     // 获取form元素
     const form = ref<any>(null);
 
     // 导出有关Dialog的属性,方法
     const { dialogState, showLabelDialog, closeLabelDialog } = useDialog();
-
+    // 导出拖拽相关的方法
+    const { handleDragstart, handleDrop, handleDragover, dragState } = useDrag(emit, 'change-label-index');
     const state = reactive<LabelState>({
       // 标志当前是何种操作
       handleType: 'add',
@@ -139,12 +140,16 @@ export default defineComponent({
       changeLabel,
       ...toRefs(state),
       ...toRefs(dialogState),
+      ...toRefs(dragState),
       showLabelDialog,
       closeLabelDialog,
       handleLabel,
       addLabel,
       updateLabel,
       deleteLabel,
+      handleDrop,
+      handleDragstart,
+      handleDragover,
     };
   },
 });

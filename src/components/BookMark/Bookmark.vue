@@ -13,7 +13,7 @@
         <img src="../../assets/logo.png" class="logo">
       </div>
       <div class="left-middle-part">
-        <label-list :current-id="currentId" :label-list='warblerData' @change-label='changeLabel' @add-label="addLabel" @delete-label="deleteLabel" @update-label="updateLabel" :edit-mode='editMode'></label-list>
+        <label-list @change-label-index='changeLabelIndex' :current-id="currentId" :label-list='warblerData' @change-label='changeLabel' @add-label="addLabel" @delete-label="deleteLabel" @update-label="updateLabel" :edit-mode='editMode'></label-list>
       </div>
       <div class="left-bottom-part">
         <action-bar v-model='editMode'></action-bar>
@@ -83,7 +83,7 @@ export default defineComponent({
     };
 
     // 导出useLabels相关内容
-    const { addLabel, deleteLabel, updateLabel } = useLabels(state.warblerData);
+    const { addLabel, deleteLabel, updateLabel, changeLabelIndex } = useLabels(state.warblerData);
 
     // 导出useMarks相关内容
     const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(currentId, state.warblerData);
@@ -116,6 +116,7 @@ export default defineComponent({
     });
     return {
       currentId,
+      markList,
       ...toRefs(state),
       changeLabel,
       addLabel,
@@ -127,8 +128,8 @@ export default defineComponent({
       updateMark,
       editModeFn,
       updateWarblerData,
-      markList,
       changeMarkIndex,
+      changeLabelIndex,
     };
   },
 });
