@@ -1,7 +1,7 @@
 <!--
  * @Description:操作栏
  * @Date: 2021-05-11 17:28:17
- * @LastEditTime: 2021-06-03 15:10:56
+ * @LastEditTime: 2021-06-03 19:10:07
  * @FilePath: \WarblerHomepage\src\components\ActionBar\ActionBar.vue
 -->
 <template>
@@ -19,7 +19,7 @@ import { emitter } from 'hooks/useMitt';
 import createMessage from 'base/Message/index';
 import Instructions from 'coms/Instructions/Instructions.vue';
 import { downloadFile, uploadFile } from 'utils/file';
-import { getItem } from 'utils/localForage';
+import { getItem } from 'utils/localStorage';
 import { dataFormat } from 'coms/ActionBar/index';
 
 export default defineComponent({
