@@ -1,7 +1,7 @@
 <!--
  * @Description:操作栏
  * @Date: 2021-05-11 17:28:17
- * @LastEditTime: 2021-06-03 14:47:29
+ * @LastEditTime: 2021-06-03 15:10:56
  * @FilePath: \WarblerHomepage\src\components\ActionBar\ActionBar.vue
 -->
 <template>
@@ -32,19 +32,23 @@ export default defineComponent({
   setup(props, { emit }) {
     // 点击图标的处理函数
     const handleClick = (index: number) => {
+      // 添加标签
       if (index === 0) {
         emitter.emit('add-label');
       }
+      // 进入/退出编辑模式
       if (index === 1) {
         emit('update:modelValue', true);
         createMessage('已进入编辑模式,点击右下角即可退出 !');
       }
+      // 上传文件
       if (index === 2) {
         // 获取type为file的input元素
         const input = document.querySelector('#file-select') as HTMLInputElement;
         // 模拟点击
         input.click();
       }
+      // 下载文件
       if (index === 3) {
         // 从浏览器本地取出数据
         const warblerData = getItem('WARBLER_DATA');
@@ -56,6 +60,7 @@ export default defineComponent({
         };
         downloadFile(jsonStr);
       }
+      // 打开帮助弹窗
       if (index === 4) {
         emitter.emit('open-instructions-dialog');
       }

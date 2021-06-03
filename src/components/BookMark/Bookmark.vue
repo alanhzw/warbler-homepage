@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-03 14:56:18
+ * @LastEditTime: 2021-06-03 15:16:16
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -104,11 +104,12 @@ export default defineComponent({
       createMessage('已退出编辑模式 !');
     };
 
+    // 更新数据
     const updateWarblerData = (warblerData: any) => {
       state.warblerData = warblerData;
       currentId.value = 0;
     };
-    // 监听事件,打开添加标签弹窗
+    // 监听事件,更新数据
     emitter.on('update-warblerData', updateWarblerData);
     // 显式卸载
     onUnmounted(() => {
