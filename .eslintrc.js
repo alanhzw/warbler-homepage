@@ -1,8 +1,8 @@
 /*
  * @Description:代码规范文件
  * @Date: 2021-03-29 19:03:25
- * @LastEditTime: 2021-05-03 12:26:50
- * @FilePath: \warbler-homepage\.eslintrc.js
+ * @LastEditTime: 2021-06-03 16:35:23
+ * @FilePath: \WarblerHomepage\.eslintrc.js
  */
 module.exports = {
   root: true,
@@ -16,7 +16,7 @@ module.exports = {
   rules: {
     curly: [2, 'all'], // 必须使用 if(){} 中的{}
     'no-undef': 1, // 任何对未声明的变量的引用都会导致警告
-    'no-unused-vars': 1, // 定义未使用的变量
+    'no-unused-vars': 0, // 定义未使用的变量
     'no-console': 0, // 禁止使用console
     'no-multi-spaces': 2, // 禁止使用多个空格
     'no-irregular-whitespace': 2, // 不能有不规则的空格
@@ -45,5 +45,6 @@ module.exports = {
     'no-debugger': 1,
     '@typescript-eslint/explicit-module-boundary-types': 0, // 显示的设置返回值
     '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-unused-vars': 0,
   },
 };

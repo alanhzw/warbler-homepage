@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-03 15:16:16
+ * @LastEditTime: 2021-06-03 16:51:54
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -21,8 +21,9 @@
     </div>
     <!-- 右侧详情栏 搜索栏 -->
     <div class="right-part">
-      <!-- 上分搜索栏部分 -->
+      <!-- 上方搜索栏部分 -->
       <div class="right-top-part">
+        <Theme />
         <Search />
       </div>
       <!-- 下方列表详情部分 -->
@@ -53,6 +54,7 @@ import useMarks from './useMarks';
 import createMessage from 'base/Message/index';
 import ActionBar from 'coms/ActionBar/ActionBar.vue';
 import Search from 'coms/Search/Search.vue';
+import Theme from '../Theme/Theme.vue';
 export default defineComponent({
   name: 'Bookmark',
   components: {
@@ -60,6 +62,7 @@ export default defineComponent({
     MarkList,
     ActionBar,
     Search,
+    Theme,
   },
   setup() {
     const state = reactive<BookmarkState>({
@@ -191,6 +194,7 @@ export default defineComponent({
       width: 100%;
       height: 100px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
     }
     .right-middle-part {
       height: calc(100% - 140px);

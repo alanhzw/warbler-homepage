@@ -1,12 +1,12 @@
 <!--
  * @Description:Dialog弹窗组件
  * @Date: 2021-04-16 16:17:47
- * @LastEditTime: 2021-05-11 19:25:54
- * @FilePath: \warbler-homepage\src\baseComponents\Dialog\Dialog.vue
+ * @LastEditTime: 2021-06-03 16:59:06
+ * @FilePath: \WarblerHomepage\src\baseComponents\Dialog\Dialog.vue
 -->
 <template>
   <!-- 遮罩层 -->
-  <overlay :show='dialogVisible' @close='onCancle' :close-on-click-modal='true'></overlay>
+  <overlay v-if='dialogVisible' :show='dialogVisible' @close='onCancle' :close-on-click-modal='true'></overlay>
   <!-- 传送门  此处Dom节点会被插在.Dialog里 -->
   <teleport to='.Dialog'>
     <div class="dialog-box" v-bind='$attrs'>
@@ -70,7 +70,9 @@ export default defineComponent({
   emits: ['cancle', 'confirm'],
   setup(props, { emit }) {
     // 创建dom节点 .Dialog
-    useDOMCreate('Dialog');
+    if (!document.querySelector('.Dialog')) {
+      useDOMCreate('Dialog');
+    }
     // 关闭Dialog
     const onCancle = () => {
       emit('cancle');
