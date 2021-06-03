@@ -1,13 +1,13 @@
 <!--
  * @Description:标签列表组件
  * @Date: 2021-04-21 19:10:21
- * @LastEditTime: 2021-06-02 15:01:14
+ * @LastEditTime: 2021-06-03 14:25:58
  * @FilePath: \WarblerHomepage\src\components\LabelList\LabelList.vue
 -->
 <template>
   <div class="label-list-box">
     <!-- 循环生成标签列表 -->
-    <div :draggable="editMode" @dragend="changeLabel(newItemIndex,'click')" @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" v-for='(item,index) in labelList' :key='index' class="label" @click.prevent='changeLabel(index ,"click")' @mouseenter="changeLabel(index,'hover')" @mouseleave="changeLabel(-1,'hover')" :class='{currentClick:currentId===index,currentHover:currentHoverLabel===index}'>
+    <div :draggable="editMode" @dragend="dragendFn()" @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" v-for='(item,index) in labelList' :key='index' class="label" @click.prevent='changeLabel(index ,"click")' @mouseenter="changeLabel(index,'hover')" @mouseleave="changeLabel(-1,'hover')" :class='{currentClick:currentId===index,currentHover:currentHoverLabel===index,isDragging:index === newItemIndex}'>
       <!-- 标签标题 -->
       <i class="iconfont">&#xe610;</i>
       <div :title='item.title' class="label-title">
@@ -66,7 +66,7 @@ export default defineComponent({
     // 导出有关Dialog的属性,方法
     const { dialogState, showLabelDialog, closeLabelDialog } = useDialog();
     // 导出拖拽相关的方法
-    const { handleDragstart, handleDrop, handleDragover, dragState } = useDrag(emit, 'change-label-index');
+    const { handleDragstart, handleDrop, handleDragover, handleDragend, dragState } = useDrag(emit, 'change-label-index');
     const state = reactive<LabelState>({
       // 标志当前是何种操作
       handleType: 'add',
@@ -135,6 +135,11 @@ export default defineComponent({
     onUnmounted(() => {
       emitter.off('add-label', addLabel);
     });
+    // 停止拖拽时触发
+    const dragendFn = () => {
+      changeLabel(dragState.newItemIndex, 'click');
+      handleDragend();
+    };
     return {
       form,
       changeLabel,
@@ -150,6 +155,7 @@ export default defineComponent({
       handleDrop,
       handleDragstart,
       handleDragover,
+      dragendFn,
     };
   },
 });
@@ -204,6 +210,20 @@ export default defineComponent({
         font-size: 12px;
         margin: 4px 8px 2px 0px;
       }
+    }
+  }
+  .isDragging {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #8307ea;
+      top: -1px;
+      left: 0px;
+      border-radius: 2px;
+      box-shadow: 0px 5px 26px 2px #4646cc;
     }
   }
 }

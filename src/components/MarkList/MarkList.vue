@@ -1,12 +1,12 @@
 <!--
  * @Description:书签列表组件
  * @Date: 2021-04-21 19:22:00
- * @LastEditTime: 2021-06-02 14:56:35
+ * @LastEditTime: 2021-06-03 14:27:38
  * @FilePath: \WarblerHomepage\src\components\MarkList\MarkList.vue
 -->
 <template>
   <div class="mark-list-box">
-    <div :draggable="editMode" v-for='(item,index) in markList' @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" :key='index' class="mark-item" @click='inter(item.targetUrl)' @mouseenter="changeMark(index)" @mouseleave="changeMark(-1)">
+    <div :draggable="editMode" v-for='(item,index) in markList' :class='{isDragging:index === newItemIndex}' @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" @dragend="handleDragend()" :key='index' class="mark-item" @click='inter(item.targetUrl)' @mouseenter="changeMark(index)" @mouseleave="changeMark(-1)">
       <!-- 图标 -->
       <img :src="item.icon" class="item-icon" :onerror='defaultImg'>
       <!-- 标题 -->
@@ -98,7 +98,7 @@ export default defineComponent({
     // 导出有关Dialog的属性,方法
     const { dialogState, dialogFormState, showAddMarkDialog, closeAddMarkDialog, autoGetInfo } = useDialog();
     // 导出拖拽相关的方法
-    const { handleDragstart, handleDrop, handleDragover, dragState } = useDrag(emit, 'change-mark-index');
+    const { handleDragstart, handleDrop, handleDragover, handleDragend, dragState } = useDrag(emit, 'change-mark-index');
     // 操作书签
     const handleMark = (type: HandleMarkType) => {
       const result = form.value.submitForm();
@@ -170,6 +170,7 @@ export default defineComponent({
       handleDrop,
       handleDragstart,
       handleDragover,
+      handleDragend,
     };
   },
 });
@@ -250,6 +251,21 @@ export default defineComponent({
     transform: translate(-50%);
     font-size: 14px;
     color: var(--theme-main);
+  }
+
+  .isDragging {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #4646cc;
+      top: -1px;
+      left: 0px;
+      border-radius: 2px;
+      box-shadow: 0px 5px 26px 2px blue;
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 /*
  * @Description:拖放hooks
  * @Date: 2021-06-02 14:35:21
- * @LastEditTime: 2021-06-02 14:52:38
+ * @LastEditTime: 2021-06-03 14:20:04
  * @FilePath: \WarblerHomepage\src\hooks\useDraggable.ts
  */
 
@@ -23,7 +23,7 @@ const useDrag = (emit: any, emitName: string) => {
   const handleDragstart = (index: number) => {
     dragState.oldItemIndex = index;
   };
-  // 停止拖拽时触发
+  // 在目标位置上松开时拖拽时触发
   const handleDrop = () => {
     // 如果位置没有发生改变 什么也不做
     if (dragState.newItemIndex === dragState.oldItemIndex) {
@@ -36,11 +36,17 @@ const useDrag = (emit: any, emitName: string) => {
   const handleDragover = (index: number) => {
     dragState.newItemIndex = index;
   };
+  // 拖拽结束时触发
+  const handleDragend = () => {
+    dragState.newItemIndex = -1;
+    dragState.oldItemIndex = -1;
+  };
   return {
     dragState,
     handleDragstart,
     handleDrop,
     handleDragover,
+    handleDragend,
   };
 };
 
