@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-05-31 18:43:33
+ * @LastEditTime: 2021-06-03 14:56:18
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -43,7 +43,7 @@
 
 <script lang='ts'>
 import { defineComponent, ref, toRefs, watch, reactive, onUnmounted, computed } from 'vue';
-import { setItem, getItem } from 'utils/localStorage';
+import { setItem, getItem } from 'utils/localForage';
 import { initData, LabelListProps, BookmarkState, getMotto } from 'coms/BookMark/index';
 import { emitter } from 'hooks/useMitt';
 import LabelList from 'coms/LabelList/LabelList.vue';

@@ -1,7 +1,7 @@
 <!--
  * @Description:标签列表组件
  * @Date: 2021-04-21 19:10:21
- * @LastEditTime: 2021-06-03 14:25:58
+ * @LastEditTime: 2021-06-03 14:48:41
  * @FilePath: \WarblerHomepage\src\components\LabelList\LabelList.vue
 -->
 <template>
@@ -43,6 +43,7 @@ export default defineComponent({
     labelList: {
       type: Array as PropType<LabelListProps>,
       required: true,
+      default: () => [],
     },
     editMode: {
       type: Boolean,

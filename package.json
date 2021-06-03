@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "localforage": "^1.9.0",
     "mitt": "^2.1.0",
     "vue": "^3.0.5"
   },
