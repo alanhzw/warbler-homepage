@@ -10,12 +10,6 @@
           "explain": ""
         },
         {
-          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/193408/32/4343/6479/60a78929E4303368d/c342786431ace070.png",
-          "title": "腾讯视频",
-          "explain": "",
-          "targetUrl": "https://v.qq.com/"
-        },
-        {
           "icon": "//img10.360buyimg.com/imgzone/jfs/t1/174971/9/10559/3897/60a789e9E06a8ff80/1d76f1a9a1948bab.png",
           "title": "爱奇艺视频",
           "explain": "",
@@ -28,16 +22,40 @@
           "targetUrl": "https://www.mgtv.com/"
         },
         {
-          "icon": "https://www.zkdh.net/wp-content/uploads/2020/05/ic_launcher.png",
-          "title": "掌酷导航",
-          "explain": "专注影音娱乐的网址导航",
-          "targetUrl": "https://www.zkdh.net/"
+          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/193408/32/4343/6479/60a78929E4303368d/c342786431ace070.png",
+          "title": "腾讯视频",
+          "explain": "",
+          "targetUrl": "https://v.qq.com/"
         },
         {
           "icon": "//img10.360buyimg.com/imgzone/jfs/t1/174642/31/11085/4236/60ab0e5eEae1f6f4e/4de8481661d812e3.png",
           "title": "哔哩哔哩",
           "explain": "",
           "targetUrl": "https://www.bilibili.com/"
+        },
+        {
+          "icon": "https://www.zkdh.net/wp-content/uploads/2020/05/ic_launcher.png",
+          "title": "掌酷导航",
+          "explain": "专注影音娱乐的网址导航",
+          "targetUrl": "https://www.zkdh.net/"
+        },
+        {
+          "icon": "https://game.gtimg.cn/images/lol/v3/logo-public.png",
+          "title": "英雄联盟赛事官网",
+          "explain": "",
+          "targetUrl": "https://lpl.qq.com/"
+        },
+        {
+          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/196801/11/5211/8955/60b0bc77Ed6fa9536/c2bc9d6ec1217ee0.png",
+          "title": "斗鱼直播",
+          "explain": "",
+          "targetUrl": "https://www.douyu.com/"
+        },
+        {
+          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/187918/2/5444/8610/60b0bc77Edf1444c4/f714caae245d0d79.png",
+          "title": "虎牙直播",
+          "explain": "",
+          "targetUrl": "https://www.huya.com/"
         }
       ]
     },
@@ -57,10 +75,10 @@
           "targetUrl": "https://console.cloud.tencent.com/cvm/instance/index?rid=8"
         },
         {
-          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/194522/22/4281/2344/60a78d0eEc8a3aaf7/2062640bcbe3f83f.png",
           "title": "宝塔Linux面板",
-          "explain": "服务器可视化管理平台",
-          "targetUrl": "http://81.70.96.113:8888/"
+          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/194522/22/4281/2344/60a78d0eEc8a3aaf7/2062640bcbe3f83f.png",
+          "targetUrl": "http://81.70.96.113:8888/71c04f96",
+          "explain": "服务器可视化管理平台"
         },
         {
           "icon": "//img10.360buyimg.com/imgzone/jfs/t1/181659/27/5372/5371/60a78dc5Ee81d6485/77570c1c9c34ac6a.png",
@@ -79,6 +97,18 @@
           "icon": "//img10.360buyimg.com/imgzone/jfs/t1/179528/3/5637/3396/60ab1c19Ebb9f2301/0d21547c755c6b84.png",
           "targetUrl": "https://github.com/alanhzw",
           "explain": "我的另一个代码托管平台"
+        },
+        {
+          "icon": "https://gitstar.com.cn/static/img/logo_white.png",
+          "title": "GitStar",
+          "explain": "Github互赞吧",
+          "targetUrl": "https://gitstar.com.cn/"
+        },
+        {
+          "icon": "//img10.360buyimg.com/imgzone/jfs/t1/171933/4/10812/2884/60a7934dE25cb73af/ca5e0d68920e1004.png",
+          "title": "我的博客",
+          "explain": "韩志伟的个人博客",
+          "targetUrl": "https://www.duwanyu.com"
         }
       ]
     },
@@ -557,6 +587,12 @@
           "title": "CSS Tricks",
           "explain": "CSS特效,动画 参考",
           "targetUrl": "https://lhammer.cn/You-need-to-know-css/#/"
+        },
+        {
+          "icon": "https://imgtu.com/content/images/system/logo_homepage_1614099241093_2dd41b.png",
+          "title": "路过图床",
+          "explain": "免费图片上传, 专业图片外链, 免费公共图床",
+          "targetUrl": "https://imgtu.com/"
         }
       ]
     },
