@@ -1,7 +1,7 @@
 <!--
  * @Description:书签列表组件
  * @Date: 2021-04-21 19:22:00
- * @LastEditTime: 2021-06-03 14:27:38
+ * @LastEditTime: 2021-06-07 11:19:03
  * @FilePath: \WarblerHomepage\src\components\MarkList\MarkList.vue
 -->
 <template>
@@ -204,6 +204,7 @@ export default defineComponent({
     }
     .item-icon {
       width: 80px;
+      max-height: 80px;
     }
     .item-info {
       padding: 0 20px;
