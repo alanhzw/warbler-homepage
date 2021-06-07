@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-03 19:09:55
+ * @LastEditTime: 2021-06-07 16:46:17
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -55,6 +55,8 @@ import createMessage from 'base/Message/index';
 import ActionBar from 'coms/ActionBar/ActionBar.vue';
 import Search from 'coms/Search/Search.vue';
 import Theme from '../Theme/Theme.vue';
+import localforage from 'localforage';
+
 export default defineComponent({
   name: 'Bookmark',
   components: {
@@ -66,12 +68,23 @@ export default defineComponent({
   },
   setup() {
     const state = reactive<BookmarkState>({
-      // 整个项目所需的数据  如果localstroge里面有就用  没有就用初始值
-      warblerData: ((getItem('WARBLER_DATA') as unknown) as LabelListProps) || initData,
+      // 整个项目所需的数据  如果localFroge里面有就用  没有就用初始值  (getItem('WARBLER_DATA') as unknown as LabelListProps) || initData
+      warblerData: [],
       // 是否启用编辑模式
       editMode: false,
       // 格言
       motto: getMotto(),
+    });
+
+    // 获取初始数据
+    localforage.getItem('WARBLER_DATA').then((value) => {
+      // 查询数据库  如果存在数据 使用库里的数据  否则使用初始默认数据
+      if (value) {
+        const result = JSON.parse(value as string) as LabelListProps;
+        state.warblerData = result;
+      } else {
+        state.warblerData = initData;
+      }
     });
 
     // 获取当前标签下的所有书签
@@ -91,12 +104,12 @@ export default defineComponent({
     // 导出useMarks相关内容
     const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(currentId, state.warblerData);
 
-    // 把数据存到localstroge中  监听  当数据变化的时候就调取一次存储方法
-    // 立即调用一次的目的是如果localstroge里面没有值则立刻存一次
+    // 把数据存到localFroge中  监听  当数据变化的时候就调取一次存储方法
+    // 立即调用一次的目的是如果localFroge里面没有值则立刻存一次
     watch(
       () => state,
       () => {
-        setItem('WARBLER_DATA', JSON.stringify(state.warblerData));
+        localforage.setItem('WARBLER_DATA', JSON.stringify(state.warblerData));
       },
       { immediate: true, deep: true }
     );
