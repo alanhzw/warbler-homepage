@@ -1,7 +1,7 @@
 /*
  * @Description:收藏夹组件的一些基础配置,数据,接口等
  * @Date: 2021-04-26 11:45:42
- * @LastEditTime: 2021-06-07 16:51:57
+ * @LastEditTime: 2021-06-07 17:40:57
  * @FilePath: \WarblerHomepage\src\components\BookMark\index.ts
  */
 
@@ -109,12 +109,6 @@ export const initData: LabelListProps = [
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/179528/3/5637/3396/60ab1c19Ebb9f2301/0d21547c755c6b84.png',
         targetUrl: 'https://github.com/alanhzw',
         explain: '我的另一个代码托管平台',
-      },
-      {
-        icon: 'https://gitstar.com.cn/static/img/logo_white.png',
-        title: 'GitStar',
-        explain: 'Github互赞吧',
-        targetUrl: 'https://gitstar.com.cn/',
       },
       {
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/171933/4/10812/2884/60a7934dE25cb73af/ca5e0d68920e1004.png',
