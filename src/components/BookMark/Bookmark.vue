@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-07 16:46:17
+ * @LastEditTime: 2021-06-07 17:23:08
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -102,13 +102,14 @@ export default defineComponent({
     const { addLabel, deleteLabel, updateLabel, changeLabelIndex } = useLabels(state.warblerData);
 
     // 导出useMarks相关内容
-    const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(currentId, state.warblerData);
+    const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(markList);
 
     // 把数据存到localFroge中  监听  当数据变化的时候就调取一次存储方法
     // 立即调用一次的目的是如果localFroge里面没有值则立刻存一次
     watch(
       () => state,
       () => {
+        console.log('🚀🚀~ 改变了:');
         localforage.setItem('WARBLER_DATA', JSON.stringify(state.warblerData));
       },
       { immediate: true, deep: true }
@@ -124,6 +125,7 @@ export default defineComponent({
     const updateWarblerData = (warblerData: any) => {
       state.warblerData = warblerData;
       currentId.value = 0;
+      console.log('🚀🚀~ 222:', 2);
     };
     // 监听事件,更新数据
     emitter.on('update-warblerData', updateWarblerData);
