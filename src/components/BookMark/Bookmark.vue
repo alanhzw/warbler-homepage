@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-07 17:23:08
+ * @LastEditTime: 2021-06-07 17:29:29
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -109,7 +109,6 @@ export default defineComponent({
     watch(
       () => state,
       () => {
-        console.log('🚀🚀~ 改变了:');
         localforage.setItem('WARBLER_DATA', JSON.stringify(state.warblerData));
       },
       { immediate: true, deep: true }
@@ -125,7 +124,6 @@ export default defineComponent({
     const updateWarblerData = (warblerData: any) => {
       state.warblerData = warblerData;
       currentId.value = 0;
-      console.log('🚀🚀~ 222:', 2);
     };
     // 监听事件,更新数据
     emitter.on('update-warblerData', updateWarblerData);
