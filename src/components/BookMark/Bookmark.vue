@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-08 10:55:19
+ * @LastEditTime: 2021-06-08 10:55:56
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -53,7 +53,7 @@ import useMarks from './useMarks';
 import createMessage from 'base/Message/index';
 import ActionBar from 'coms/ActionBar/ActionBar.vue';
 import Search from 'coms/Search/Search.vue';
-import Theme from '../Theme/Theme.vue';
+// import Theme from '../Theme/Theme.vue';
 import localforage from 'localforage';
 
 export default defineComponent({
@@ -63,7 +63,7 @@ export default defineComponent({
     MarkList,
     ActionBar,
     Search,
-    Theme,
+    // Theme,
   },
   setup() {
     const state = reactive<BookmarkState>({
