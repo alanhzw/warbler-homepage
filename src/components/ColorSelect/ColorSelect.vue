@@ -1,7 +1,7 @@
 <!--
  * @Description:
  * @Date: 2021-06-03 16:06:43
- * @LastEditTime: 2021-06-03 17:16:13
+ * @LastEditTime: 2021-06-07 18:00:18
  * @FilePath: \WarblerHomepage\src\components\ColorSelect\ColorSelect.vue
 -->
 <template>
@@ -12,16 +12,24 @@
 </template>
 
 <script setup lang='ts'>
-import { useContext, defineProps, defineEmit, reactive, toRefs } from 'vue';
+import { useContext, defineProps, defineEmit, reactive, computed } from 'vue';
 import type { ColorState } from 'coms/ColorSelect/index';
 const props = defineProps({
   colorTitle: {
     type: String,
     default: '颜色',
   },
+  modelValue: String,
 });
+const emit = defineEmit(['update:modelValue']);
 const state = reactive<ColorState>({
-  colorValue: '',
+  // 使用计算属性的get,set方法来实现修改input值
+  colorValue: computed({
+    get: () => props.modelValue || '',
+    set: (val) => {
+      emit('update:modelValue', val);
+    },
+  }),
 });
 </script>
 
