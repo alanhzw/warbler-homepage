@@ -1,15 +1,22 @@
 <!--
  * @Description:操作栏
  * @Date: 2021-05-11 17:28:17
- * @LastEditTime: 2021-06-03 19:10:07
+ * @LastEditTime: 2021-08-09 18:23:13
  * @FilePath: \WarblerHomepage\src\components\ActionBar\ActionBar.vue
 -->
 <template>
   <div class="action-bar-box">
-    <i class="iconfont" v-for='(item,index) in initData' :key='index' :title="item.title" v-html="item.icon" @click='handleClick(index)'></i>
+    <i class="iconfont"
+       v-for='(item,index) in initData'
+       :key='index'
+       :title="item.title"
+       v-html="item.icon"
+       @click='handleClick(index)'></i>
     <Instructions />
   </div>
-  <input type="file" id="file-select" @change="handleUploadFile">
+  <input type="file"
+         id="file-select"
+         @change="handleUploadFile">
 </template>
 
 <script lang='ts'>
@@ -21,6 +28,7 @@ import Instructions from 'coms/Instructions/Instructions.vue';
 import { downloadFile, uploadFile } from 'utils/file';
 import { getItem } from 'utils/localStorage';
 import { dataFormat } from 'coms/ActionBar/index';
+import localforage from 'localforage';
 
 export default defineComponent({
   name: 'ActionBar',
@@ -51,14 +59,14 @@ export default defineComponent({
       // 下载文件
       if (index === 3) {
         // 从浏览器本地取出数据
-        const warblerData = getItem('WARBLER_DATA');
-        const themeData = getItem('THEME_DATA');
-        // 整合数据
-        let jsonStr: any = {
-          warblerData,
-          themeData,
-        };
-        downloadFile(jsonStr);
+        localforage.getItem('WARBLER_DATA').then((value) => {
+          // 查询数据库  如果存在数据 使用库里的数据  否则使用初始默认数据
+          if (value) {
+            downloadFile(value);
+          } else {
+            downloadFile('');
+          }
+        });
       }
       // 打开帮助弹窗
       if (index === 4) {
