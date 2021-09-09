@@ -1,7 +1,7 @@
 /*
  * @Description:代码规范文件
  * @Date: 2021-03-29 19:03:25
- * @LastEditTime: 2021-06-03 16:35:23
+ * @LastEditTime: 2021-07-23 19:36:14
  * @FilePath: \WarblerHomepage\.eslintrc.js
  */
 module.exports = {
@@ -42,9 +42,9 @@ module.exports = {
     'space-infix-ops': 2, // 要求操作符周围有空格
     'vue/no-mutating-props': 'warn', // 规定不可以修改props
     'vue/attribute-hyphenation': 'warn', // 规定组件上的自定义属性命名以中划线命名 ( 例如 data-name )
-    'no-debugger': 1,
+    'no-debugger': 1, // 禁止debugger
     '@typescript-eslint/explicit-module-boundary-types': 0, // 显示的设置返回值
-    '@typescript-eslint/no-non-null-assertion': 0,
-    '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/no-non-null-assertion': 0, // 禁止使用 non- null 断言（感叹号）
+    '@typescript-eslint/no-unused-vars': 0, // 消除未使用的变量，函数和函数的参数
   },
 };

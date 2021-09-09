@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-06-08 10:55:56
+ * @LastEditTime: 2021-09-09 11:30:39
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -10,10 +10,18 @@
     <!-- 左侧标签栏 -->
     <div class="left-part">
       <div class="left-top-part">
-        <img src="../../assets/logo.png" class="logo">
+        <img src="../../assets/logo.png"
+             class="logo">
       </div>
       <div class="left-middle-part">
-        <label-list @change-label-index='changeLabelIndex' :current-id="currentId" :label-list='warblerData' @change-label='changeLabel' @add-label="addLabel" @delete-label="deleteLabel" @update-label="updateLabel" :edit-mode='editMode'></label-list>
+        <label-list @change-label-index='changeLabelIndex'
+                    :current-id="currentId"
+                    :label-list='warblerData'
+                    @change-label='changeLabel'
+                    @add-label="addLabel"
+                    @delete-label="deleteLabel"
+                    @update-label="updateLabel"
+                    :edit-mode='editMode'></label-list>
       </div>
       <div class="left-bottom-part">
         <action-bar v-model='editMode'></action-bar>
@@ -28,10 +36,17 @@
       </div>
       <!-- 下方列表详情部分 -->
       <div class="right-middle-part">
-        <mark-list :mark-list="markList" @add-mark="addMark" @delete-mark="deleteMark" @update-mark="updateMark" :edit-mode='editMode' @change-mark-index='changeMarkIndex'></mark-list>
+        <mark-list :mark-list="markList"
+                   @add-mark="addMark"
+                   @delete-mark="deleteMark"
+                   @update-mark="updateMark"
+                   :edit-mode='editMode'
+                   @change-mark-index='changeMarkIndex'></mark-list>
       </div>
       <div class="right-bottom-part">
-        <div class="quit-edit-mode" v-if='editMode' @click='editModeFn'>
+        <div class="quit-edit-mode"
+             v-if='editMode'
+             @click='editModeFn'>
           退出编辑模式
         </div>
         <div class="motto-text">
@@ -53,7 +68,7 @@ import useMarks from './useMarks';
 import createMessage from 'base/Message/index';
 import ActionBar from 'coms/ActionBar/ActionBar.vue';
 import Search from 'coms/Search/Search.vue';
-// import Theme from '../Theme/Theme.vue';
+import Theme from '../Theme/Theme.vue';
 import localforage from 'localforage';
 
 export default defineComponent({
@@ -98,7 +113,7 @@ export default defineComponent({
     };
 
     // 导出useLabels相关内容
-    const { addLabel, deleteLabel, updateLabel, changeLabelIndex } = useLabels(state.warblerData);
+    const { addLabel, deleteLabel, updateLabel, changeLabelIndex } = useLabels(state);
 
     // 导出useMarks相关内容
     const { addMark, deleteMark, updateMark, changeMarkIndex } = useMarks(markList);

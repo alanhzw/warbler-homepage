@@ -1,7 +1,7 @@
 <!--
  * @Description:操作栏
  * @Date: 2021-05-11 17:28:17
- * @LastEditTime: 2021-08-09 18:23:13
+ * @LastEditTime: 2021-08-18 07:54:12
  * @FilePath: \WarblerHomepage\src\components\ActionBar\ActionBar.vue
 -->
 <template>
@@ -78,7 +78,8 @@ export default defineComponent({
       uploadFile(e).then((ev: any) => {
         // 为什么要包裹一层try catch, 因为 JSON.parse在转换的时候,如果格式不符合要求会报错  如果报错说明上传的JSON不是我们想要的,给出提示即可
         try {
-          // 把 JSON 字符串转换为 JSON 对象
+          /**
+           // 把 JSON 字符串转换为 JSON 对象
           const jsonObj = JSON.parse(ev.target.result);
           // 验证JSON的格式是不是我们需要的格式
           const test = () => {
@@ -98,8 +99,10 @@ export default defineComponent({
             createMessage('请上传由本站导出的json格式的文件 !');
             return;
           }
+          */
           // 如果符合要求  触发更新数据方法
-          emitter.emit('update-warblerData', jsonObj.warblerData);
+          const jsonObj = JSON.parse(ev.target.result);
+          emitter.emit('update-warblerData', JSON.parse(jsonObj));
         } catch (error) {
           createMessage('请上传由本站导出的json格式的文件 !');
         }
