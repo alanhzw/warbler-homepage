@@ -1,7 +1,7 @@
 <!--
  * @Description:收藏夹组件
  * @Date: 2021-04-16 15:49:28
- * @LastEditTime: 2021-09-09 11:30:39
+ * @LastEditTime: 2021-11-02 17:35:11
  * @FilePath: \WarblerHomepage\src\components\BookMark\Bookmark.vue
 -->
 <template>
@@ -97,7 +97,7 @@ export default defineComponent({
         const result = JSON.parse(value as string) as LabelListProps;
         state.warblerData = result;
       } else {
-        state.warblerData = initData;
+        state.warblerData = JSON.parse(initData);
       }
     });
 
