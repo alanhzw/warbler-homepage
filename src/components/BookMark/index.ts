@@ -1,7 +1,7 @@
 /*
  * @Description:收藏夹组件的一些基础配置,数据,接口等
  * @Date: 2021-04-26 11:45:42
- * @LastEditTime: 2021-08-17 12:14:36
+ * @LastEditTime: 2021-12-13 10:49:23
  * @FilePath: \WarblerHomepage\src\components\BookMark\index.ts
  */
 
@@ -11,7 +11,7 @@ import data from './data';
 export type LabelListProps = LabelsProps[];
 
 // 初始数据
-export const initData: string = data;
+export const initData: any = data;
 
 // 数据类型
 export interface BookmarkState {

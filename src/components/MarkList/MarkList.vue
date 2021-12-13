@@ -1,57 +1,110 @@
 <!--
  * @Description:书签列表组件
  * @Date: 2021-04-21 19:22:00
- * @LastEditTime: 2021-06-07 11:19:03
+ * @LastEditTime: 2021-12-13 11:13:53
  * @FilePath: \WarblerHomepage\src\components\MarkList\MarkList.vue
 -->
 <template>
   <div class="mark-list-box">
-    <div :draggable="editMode" v-for='(item,index) in markList' :class='{isDragging:index === newItemIndex}' @dragstart="handleDragstart(index)" @drop.prevent="handleDrop()" @dragover.prevent="handleDragover(index)" @dragend="handleDragend()" :key='index' class="mark-item" @click='inter(item.targetUrl)' @mouseenter="changeMark(index)" @mouseleave="changeMark(-1)">
+    <div :draggable="editMode"
+         v-for='(item,index) in markList'
+         :class='{isDragging:index === newItemIndex}'
+         @dragstart="handleDragstart(index)"
+         @drop.prevent="handleDrop()"
+         @dragover.prevent="handleDragover(index)"
+         @dragend="handleDragend()"
+         :key='index'
+         class="mark-item"
+         @click='inter(item.targetUrl)'
+         @mouseenter="changeMark(index)"
+         @mouseleave="changeMark(-1)">
       <!-- 图标 -->
-      <img :src="item.icon" class="item-icon" :onerror='defaultImg'>
+      <img :src="item.icon"
+           class="item-icon"
+           :onerror='defaultImg'>
       <!-- 标题 -->
       <div class="item-info">
-        <p class="item-title" :title='item.title'>{{item.title}}</p>
-        <p class="item-explain" :title='item.explain'>{{item.explain}}</p>
+        <p class="item-title"
+           :title='item.title'>{{item.title}}</p>
+        <p class="item-explain"
+           :title='item.explain'>{{item.explain}}</p>
       </div>
       <!-- 删除和编辑图标 -->
-      <div class="edit-icon" v-if="currentMark === index && editMode">
-        <i class="iconfont" @click.stop="updateMark(item,index)">&#xe623;</i>
-        <i class="iconfont" @click.stop="deleteMark(index)">&#xe60f;</i>
+      <div class="edit-icon"
+           v-if="currentMark === index && editMode">
+        <i class="iconfont"
+           @click.stop="updateMark(item,index)">&#xe623;</i>
+        <i class="iconfont"
+           @click.stop="deleteMark(index)">&#xe60f;</i>
       </div>
     </div>
     <!-- 暂无书签提示语 -->
-    <div v-if="markList.length < 1 && !editMode" class="no-marks">
+    <div v-if="markList.length < 1 && !editMode"
+         class="no-marks">
       暂无书签
     </div>
     <!-- 添加书签 -->
     <transition name='base'>
-      <div class="mark-item-add" @click='addMark' v-if='editMode'>
+      <div class="mark-item-add"
+           @click='addMark'
+           v-if='editMode'>
         +
       </div>
     </transition>
   </div>
   <!-- 添加单个书签的弹窗 -->
-  <Dialog :dialog-visible='isShowAddMarkDialog' @cancle='closeAddMarkDialog' @confirm='handleMark(handleType)' title='添加书签' class="add-mark-dialog">
+  <Dialog :dialog-visible='isShowAddMarkDialog'
+          @cancle='closeAddMarkDialog'
+          @confirm='handleMark(handleType)'
+          title='添加书签'
+          class="add-mark-dialog">
     <wh-from ref='form'>
-      <wh-input :rules='targetUrlRules' type="text" v-model="targetUrl" placeholder="请输入目标网址" padding='30px 30px 20px 30px'></wh-input>
-      <wh-input :rules='titleRules' type="text" v-model="title" placeholder="请输入书签名称" padding='0px 30px 20px 30px'></wh-input>
-      <wh-input :rules='iconRules' type="text" v-model="icon" placeholder="请输入图标地址" padding='0px 30px 20px 30px'></wh-input>
-      <wh-input type="text" v-model="explain" placeholder="请输入网址简介" padding='0px 30px 20px 30px'></wh-input>
+      <wh-input :rules='targetUrlRules'
+                type="text"
+                v-model="targetUrl"
+                placeholder="请输入目标网址"
+                padding='30px 30px 20px 30px'></wh-input>
+      <wh-input :rules='titleRules'
+                type="text"
+                v-model="title"
+                placeholder="请输入书签名称"
+                padding='0px 30px 20px 30px'></wh-input>
+      <wh-input :rules='iconRules'
+                type="text"
+                v-model="icon"
+                placeholder="请输入图标地址"
+                padding='0px 30px 20px 30px'></wh-input>
+      <wh-input type="text"
+                v-model="explain"
+                placeholder="请输入网址简介"
+                padding='0px 30px 20px 30px'></wh-input>
       <div class="footer">
         <div>
           <div class="auto-get-info">
-            <wh-button title='自动获取网站名称' class="auto-btn" :use-animation="true" :background-color="`rgba(199, 236, 7, 0.3)`" @click="autoGetInfo('title')"></wh-button>
-            <i class="iconfont loading" v-if='loading1'>&#xe61c;</i>
+            <wh-button title='自动获取网站名称'
+                       class="auto-btn"
+                       :use-animation="true"
+                       :background-color="`rgba(199, 236, 7, 0.3)`"
+                       @click="autoGetInfo('title')"></wh-button>
+            <i class="iconfont loading"
+               v-if='loading1'>&#xe61c;</i>
           </div>
           <div class="auto-get-info">
-            <wh-button title='自动获取图标地址' class="auto-btn" :use-animation="true" :background-color="`rgba(199, 236, 7, 0.3)`" @click="autoGetInfo('icon')"></wh-button>
-            <i class=" iconfont loading" v-if='loading2'>&#xe61c;</i>
+            <wh-button title='自动获取图标地址'
+                       class="auto-btn"
+                       :use-animation="true"
+                       :background-color="`rgba(199, 236, 7, 0.3)`"
+                       @click="autoGetInfo('icon')"></wh-button>
+            <i class=" iconfont loading"
+               v-if='loading2'>&#xe61c;</i>
           </div>
         </div>
         <div class="preview-icon">
-          <img :src="icon" v-if='icon' :onerror='`this.src="//img10.360buyimg.com/imgzone/jfs/t1/189641/13/2583/4231/609a49e5Eecece40b/1c90e5625341897c.png"`'>
-          <p class="preview-text" v-else>图标</p>
+          <img :src="icon"
+               v-if='icon'
+               :onerror='`this.src="//img10.360buyimg.com/imgzone/jfs/t1/189641/13/2583/4231/609a49e5Eecece40b/1c90e5625341897c.png"`'>
+          <p class="preview-text"
+             v-else>图标</p>
         </div>
       </div>
     </wh-from>
@@ -185,6 +238,7 @@ export default defineComponent({
   position: relative;
 
   .mark-item {
+    min-height: 102px;
     cursor: pointer;
     width: 400px;
     display: flex;
