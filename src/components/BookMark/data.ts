@@ -1,10 +1,3 @@
-/*
- * @Author: 一尾流莺
- * @Description:
- * @Date: 2021-12-13 11:10:34
- * @LastEditTime: 2021-12-14 09:30:33
- * @FilePath: \WarblerHomepage\src\components\BookMark\data.ts
- */
 const data = [
   {
     title: '视频网站',
@@ -72,7 +65,13 @@ const data = [
       {
         title: '全能VIP视频在线解析',
         icon: '/assets/favicon.46e06d36.png',
-        targetUrl: 'https://www.yijingying.com/video',
+        targetUrl: 'https://www.yijingying.com/html/video/',
+        explain: '',
+      },
+      {
+        title: '无名小站',
+        icon: '/assets/favicon.46e06d36.png',
+        targetUrl: 'https://www.btnull.org/',
         explain: '',
       },
     ],
@@ -181,14 +180,12 @@ const data = [
         targetUrl: 'https://cn.eslint.org/docs/rules/',
         explain: '代码规范工具',
       },
-
       {
         title: 'Socket.io | 中文文档',
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/176441/31/11389/4194/60ac6214E87c5c41a/1aced7cbed52605a.png',
         targetUrl: 'https://www.wenjiangs.com/doc/gyr6mn3r',
         explain: '',
       },
-
       {
         title: 'Vue.js | 官方文档',
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/184356/16/5364/4489/60a797b4E8c646a3f/b770a1bea5da638e.png',
@@ -198,7 +195,7 @@ const data = [
       {
         title: 'Vue.js | 官方文档',
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/184356/16/5364/4489/60a797b4E8c646a3f/b770a1bea5da638e.png',
-        targetUrl: 'https://www.vue3js.cn/docs/zh/',
+        targetUrl: 'https://v3.cn.vuejs.org/',
         explain: 'vue3的版本',
       },
       {
@@ -304,7 +301,6 @@ const data = [
         targetUrl: 'https://element.eleme.cn/#/zh-CN',
         explain: 'element的vue2版本',
       },
-
       {
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/173077/21/11441/4885/60aca2dfE8264d0d7/44d44c80b0e9b095.png',
         title: 'Apache ECharts',
@@ -454,7 +450,6 @@ const data = [
         explain: '一些404页面展示',
         targetUrl: 'https://error404.fun/',
       },
-
       {
         icon: '//img10.360buyimg.com/imgzone/jfs/t1/34273/14/16362/1302/60ab1522E2419f546/841ed9e8263a7d7a.png',
         title: 'Grid Garden',
@@ -467,7 +462,6 @@ const data = [
         explain: '一个用来学CSS flexbox的游戏',
         targetUrl: 'https://flexboxfroggy.com/#zh-cn',
       },
-
       {
         icon: 'https://cdn.wuwenzhou.com.cn/web/0.0.44/static/avator.b9484245.svg',
         title: 'cssbattle',
@@ -580,6 +574,19 @@ const data = [
         title: '路过图床',
         explain: '免费图片上传, 专业图片外链, 免费公共图床',
         targetUrl: 'https://imgtu.com/',
+      },
+      {
+        title: 'Draw.io',
+        icon:
+          'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMjI1IDIyNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjI1IDIyNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MXtmaWxsOiNERjZDMEM7fQoJLnN0MntmaWxsOiNGRkZGRkY7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjI1LDIxNS40YzAsNS4zLTQuMyw5LjYtOS41LDkuNmwwLDBINzcuMWwtNDQuOC00NS41TDYwLjIsMTM0bDgyLjctMTAyLjdsODIuMSw4NC41VjIxNS40eiIvPgo8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMTg0LjYsMTI1LjhoLTIzLjdsLTI1LTQyLjdjNS43LTEuMiw5LjgtNi4yLDkuNy0xMlYzOWMwLTYuOC01LjQtMTIuMy0xMi4yLTEyLjNoLTAuMUg5MS42CgljLTYuOCwwLTEyLjMsNS40LTEyLjMsMTIuMlYzOXYzMi4xYzAsNS44LDQsMTAuOCw5LjcsMTJsLTI1LDQyLjdINDAuNGMtNi44LDAtMTIuMyw1LjQtMTIuMywxMi4ydjAuMXYzMi4xCgljMCw2LjgsNS40LDEyLjMsMTIuMiwxMi4zaDAuMWg0MS43YzYuOCwwLDEyLjMtNS40LDEyLjMtMTIuMnYtMC4xdi0zMi4xYzAtNi44LTUuNC0xMi4zLTEyLjItMTIuM2gtMC4xaC00bDI0LjgtNDIuNGgxOS4zCglsMjQuOSw0Mi40SDE0M2MtNi44LDAtMTIuMyw1LjQtMTIuMywxMi4ydjAuMXYzMi4xYzAsNi44LDUuNCwxMi4zLDEyLjIsMTIuM2gwLjFoNDEuN2M2LjgsMCwxMi4zLTUuNCwxMi4zLTEyLjJ2LTAuMXYtMzIuMQoJYzAtNi44LTUuNC0xMi4zLTEyLjItMTIuM0MxODQuNywxMjUuOCwxODQuNywxMjUuOCwxODQuNiwxMjUuOHoiLz4KPC9zdmc+Cg==',
+        targetUrl: 'https://app.diagrams.net/',
+        explain: '免费的在线画图工具',
+      },
+      {
+        icon: 'https://hhpdf.com/public/img/pdf2ppt.png',
+        title: 'PDF转换器',
+        explain: '',
+        targetUrl: 'https://hhpdf.com/',
       },
     ],
   },
@@ -886,5 +893,3 @@ const data = [
     ],
   },
 ];
-
-export default data;
