@@ -4,6 +4,6 @@
   "tabWidth": 2,
   "TrailingCooma": "all",
   "bracketSpacing": true,
-  "printWidth": 200,
-  "arrowParens":"always"
+  "printWidth": 120,
+  "arrowParens": "always"
 }
